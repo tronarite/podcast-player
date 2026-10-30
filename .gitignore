@@ -1,0 +1,10 @@
+﻿.env
+data/
+node_modules/
+*.log
+android/build/
+android/*.jks
+*.jks
+*.keystore
+*.apk
+*.idsig

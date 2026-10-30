@@ -1,0 +1,27 @@
+# docker compose up -d --build
+# La configuración local (IP, puerto, carpeta de la biblioteca) va en .env — ver .env.example.
+services:
+  podcast-player:
+    build: .
+    image: podcast-player:latest
+    container_name: podcast-player
+    restart: unless-stopped
+    ports:
+      - "${BIND_IP:-127.0.0.1}:${PORT:-48213}:48213"   # p. ej. la IP de Tailscale del equipo
+    environment:
+      - ALLOWED_HOSTS=${BIND_IP:-127.0.0.1}:${PORT:-48213},127.0.0.1:48213   # cualquier otro Host se rechaza (DNS rebinding)
+      - AUTH=off            # AUTH=on para pedir usuario y contraseña (node manage-users.js add <usuario>)
+    volumes:
+      - ./data:/app/data                      # progreso, cola, favoritos, portadas y library.json
+      - ${PODCAST_DIR:?Define PODCAST_DIR en .env}:/podcasts:ro   # la biblioteca, solo lectura
+    # Aislamiento: aunque alguien comprometiera la app, no puede salir de aquí.
+    user: "node"
+    read_only: true                 # sistema de ficheros del contenedor de solo lectura
+    tmpfs:
+      - /tmp:size=16m,noexec,nosuid
+    cap_drop: [ALL]                 # sin capacidades de Linux
+    security_opt:
+      - no-new-privileges:true      # no puede escalar privilegios (setuid, etc.)
+    pids_limit: 64
+    mem_limit: 256m
+    cpus: 1.0
