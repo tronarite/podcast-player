@@ -1,0 +1,19 @@
+{
+  "Nombre de la carpeta de la serie": {
+    "title": "Título que se muestra",
+    "kind": "Ficción sonora",
+    "author": "Autoría",
+    "credits": "Productora · Reparto",
+    "year": "2024",
+    "description": "Sinopsis de la serie.",
+    "titleStrip": "^Prefijo repetido en los archivos\\s*",
+    "numberRegex": "CF(\\d+)",
+    "seasons": [
+      ["^Spin-off", "Spin-off"],
+      ["mejores momentos de la temporada (\\d+)", "Lo mejor de la temporada $1"]
+    ],
+    "episodes": {
+      "01 - nombre-del-archivo.mp3": { "title": "Título corregido", "description": "Descripción propia" }
+    }
+  }
+}

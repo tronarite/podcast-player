@@ -1,0 +1,16 @@
+# Datos locales: usuarios, clave de sesión, progreso, portadas y fichas propias
+data/*
+!data/library.example.json
+
+# Configuración local (IP, rutas)
+.env
+
+# App Android: compilación y clave de firma
+android/build/
+android/*.jks
+*.apk
+
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
