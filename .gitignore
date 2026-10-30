@@ -5,11 +5,6 @@ data/*
 # Configuración local (IP, rutas)
 .env
 
-# App Android: compilación y clave de firma
-android/build/
-android/*.jks
-*.apk
-
 node_modules/
 *.log
 .DS_Store

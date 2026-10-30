@@ -86,15 +86,6 @@ podcasts/
 
 Para corregir títulos, añadir sinopsis o definir temporadas especiales, crea `data/library.json` (mira `data/library.example.json`). Las portadas propias pueden ir en `data/covers/<nombre de la carpeta>.jpg`.
 
-## App para Android
-
-En `android/` hay una app mínima que abre la web a pantalla completa. Para compilarla necesitas el SDK de Android (build-tools 34) y un JDK; no hace falta Gradle:
-
-```sh
-APP_URL=http://TU-IP:48213/ sh android/build.sh
-# -> android/build/MiBiblioteca.apk
-```
-
 ## Futuro
 
 La idea es mantenerlo simple. Más adelante me gustaría integrarlo en algo más completo, como **Jellyfin** (o Audiobookshelf), y aprovechar su gestión de usuarios y bibliotecas.
